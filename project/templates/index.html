@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}{{ super() }}
+<div class="container">
+  <div class="card">
+    <div class="card-body text-center">
+      <h1>Добро пожаловать в игру 21</h1>
+      <a href="{{ url_for('game') }}"
+        ><button type="button" class="btn btn-light">Играть</button></a
+      >
+      <br />
+      <img src="../static/img/cards-index.png" alt="" style="width: 50em"
+    </div>
+  </div>
+</div>
+{% endblock %}

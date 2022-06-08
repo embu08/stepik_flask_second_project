@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}{{ super() }}
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <p>
+        <a href="https://ru.wikipedia.org/wiki/Очко_(игра)" target="_blank"
+          >Вики</a
+        >, для общего образования
+      </p>
+      <p>Здесь правила немного упрощены. Игрок побеждает, если:</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">2 туза</li>
+      <li class="list-group-item">21 очко</li>
+      <li class="list-group-item">
+        у обоих соперников до 21 и у игрока больше
+      </li>
+      <li class="list-group-item">
+        у обоих соперников больше 21 и у игрока меньше
+      </li>
+      <li class="list-group-item">у соперника больше 21, у игрока меньше</li>
+      <li class="list-group-item">при равенстве очков - ничья</li>
+      <li class="list-group-item">в остальных случаях - поражение</li>
+      <li class="list-group-item">в остальных случаях - поражение</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

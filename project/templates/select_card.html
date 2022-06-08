@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}{{ super() }}
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Здесь вы можете посмотреть на карты</h1>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <form action="/select-card" method="post">
+        {{ form.hidden_tag() }} {% for field in form if field.name not in
+        ['csrf_token', 'submit'] -%}
+        <p>
+          {{ field.label() }} {% if field.errors %} {{ field(class="invalid") }}
+          <span> {% for e in field.errors %} {{ e }} {% endfor %} </span>
+          {% else %} {{ field(class="form-select") }} {% endif %} {% endfor %}
+        </p>
+        <p>{{ form.submit(class="btn btn-light") }}</p>
+      </form>
+      {% if card %}
+      <div class="select_card-image-wrap">
+        <img
+          src="../static/img/cards/{{card}}.png"
+          alt="{{ card }}"
+          class="select_card-image-inner"
+        />
+      </div>
+      <br />
+      <p>Стоимость этой карты = {{ all_the_cards[card] }}</p>
+      {% endif %} {% endblock %}
+    </div>
+  </div>
+</div>

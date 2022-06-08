@@ -1,0 +1,23 @@
+.select_card-image-inner{
+    width: 13em;
+}
+.navbar{
+    padding: 10px;
+}
+.btn a{
+    color: black
+}
+.btn-light:hover{
+    background-color:  #d9dbdd;
+    border-bottom: 1px solid black;
+}
+.btn-info:hover{
+    background-color:  #25dbff;
+    border-bottom: 1px solid black;
+}
+.content{
+    display: flex;
+}
+.form-select{
+    width: 13em;
+}

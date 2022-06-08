@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}{{ super() }}
+<div class="container">
+  {% if not score[0] %}
+  <form action="/game" method="POST">
+    <input type="hidden" name="index" value="start_the_game" />
+    <input type="submit" value="Начать игру" class="btn btn-light" />
+  </form>
+
+  {% else %}
+  <p>Ваши очки: {{ score[0] }}</p>
+  <p>Вы взяли следующие карты:</p>
+  {% for i in player_cards %}
+  <img
+    src="../static/img/cards/{{ i }}.png"
+    alt="{{ i }}"
+    class="select_card-image-inner"
+  />
+  {% endfor %} {% endif %} {% if not win %}
+  <form action="/game" method="POST">
+    <input type="hidden" name="index" value="take_a_card" />
+    <input type="submit" value="Взять карту" class="btn btn-light" />
+  </form>
+  <form action="/game" method="POST">
+    <input type="hidden" name="index" value="end_the_game" />
+    <input type="submit" value="Окончить игру" class="btn btn-dark" />
+  </form>
+  {% endif %} {% if win %}
+  <p>Очки бота: {{score[1]}}, его карты:</p>
+  {% for i in bot_cards %}
+  <img
+    src="../static/img/cards/{{ i }}.png"
+    alt="{{ i }}"
+    class="select_card-image-inner"
+  />
+  {% endfor %}
+  <div class="row justify-content-center">
+    {% if win == 'w' %}
+    <div class="col-12">Поздравляем, вы победили!</div>
+    {% elif win == 'd' %}
+    <div class="col-12">Ничья!</div>
+    {% elif win == 'l' %}
+    <div class="col-12">Вы проиграли :(</div>
+    {% endif %}
+    <div class="col-12">
+      <form action="/game" method="POST">
+        <input type="hidden" name="index" value="reset" />
+        <input type="submit" value="Сыграть ещо!" class="btn btn-dark" />
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
